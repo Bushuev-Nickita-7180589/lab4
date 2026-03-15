@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435\\\u042F\u041F\\lab4\\lab4_1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8513FBC2-B7D8-42B0-B8C6-299D489F5D2C}|lab4_1.fsproj|c:\\\u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435\\\u044F\u043F\\lab4\\lab4_1\\program.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
+      "RelativeMoniker": "D:0:0:{8513FBC2-B7D8-42B0-B8C6-299D489F5D2C}|lab4_1.fsproj|solutionrelative:program.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.fs",
+              "DocumentMoniker": "C:\\\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435\\\u042F\u041F\\lab4\\lab4_1\\Program.fs",
+              "RelativeDocumentMoniker": "Program.fs",
+              "ToolTip": "C:\\\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435\\\u042F\u041F\\lab4\\lab4_1\\Program.fs",
+              "RelativeToolTip": "Program.fs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-15T16:12:35.13Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

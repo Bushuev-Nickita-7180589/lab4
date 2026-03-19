@@ -1,32 +1,10 @@
-﻿open System
+//Бушуев Никита Николаевич БАС-1(2024)
+//Вариант 2
+open System
 
 type Tree =
     | Empty
     | Node of string * Tree * Tree
-
-let rec prependChar (symbol: char) (tree: Tree) : Tree =
-    match tree with
-    | Empty -> Empty
-    | Node (text, left, right) ->
-        Node ($"{symbol}{text}", prependChar symbol left, prependChar symbol right)
-
-let rec printSimple (level: int) (tree: Tree) =
-    match tree with
-    | Empty -> ()
-    | Node (text, left, right) ->
-        let indent = String.replicate level "    "
-        printfn "%s- %s" indent text
-        printSimple (level + 1) left
-        printSimple (level + 1) right
-
-let rnd = Random()
-let rec buildRandom (size: int) : Tree =
-    if size <= 0 then Empty
-    else
-        let s = String(Array.init 3 (fun _ -> char (rnd.Next(97, 123))))
-        let leftSize = size / 2
-        let rightSize = size - 1 - leftSize
-        Node(s, buildRandom leftSize, buildRandom rightSize)
 
 let rec readNumber prompt =
     printf "%s" prompt
@@ -36,30 +14,45 @@ let rec readNumber prompt =
         printfn "Ошибка! Введите целое положительное число!"
         readNumber prompt
 
-let rec readChar prompt =
-    printf "%s" prompt
-    let input = Console.ReadLine()
-    if not (String.IsNullOrEmpty(input)) then 
-        input.[0] 
-    else 
-        printfn "Ошибка! Введите хотя бы один символ!"
-        readChar prompt
+let rnd = Random()
+
+let randomString() =
+    String(Array.init 3 (fun _ -> char (rnd.Next(97, 123))))
+
+let rec buildRandomTree size =
+    if size <= 0 then Empty
+    else
+        let value = randomString()
+        let leftSize = size / 2
+        let rightSize = size - 1 - leftSize
+        Node(value, buildRandomTree leftSize, buildRandomTree rightSize)
+
+let rec map f tree =
+    match tree with
+    | Empty -> Empty
+    | Node(value, left, right) ->
+        Node(f value, map f left, map f right)
+
+let rec printTree level tree =
+    match tree with
+    | Empty -> ()
+    | Node(value, left, right) ->
+        printfn "%s- %s" (String.replicate level "    ") value
+        printTree (level + 1) left
+        printTree (level + 1) right
 
 [<EntryPoint>]
 let main _ =
-    let n = readNumber "Сколько узлов создать? "
-    let sym = readChar "Какой символ добавить в начало? "
-
-    let tree = buildRandom n
+    let n = readNumber "Введите количество узлов: "
+    printf "Какой символ? "
+    let c = Console.ReadLine().[0]
     
-    printfn "\n--- Исходное дерево ---"
-    printSimple 0 tree
-
-    let newTree = prependChar sym tree
+    let tree = buildRandomTree n
+    printfn "\nИсходное дерево:"
+    printTree 0 tree
     
-    printfn "\n--- Обновленное дерево (с символом '%c') ---" sym
-    printSimple 0 newTree
-
-    printfn "\nНажмите любую клавишу для выхода..."
-    Console.ReadKey() |> ignore
+    let newTree = map (fun s -> string c + s) tree
+    
+    printfn "\nПосле добавления символа:"
+    printTree 0 newTree
     0
